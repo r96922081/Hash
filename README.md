@@ -1,5 +1,5 @@
 ## MD5 Hash
-An MD5 hash implementation
+An MD5 hash implementation based on content from Wikipedia
 
 The following content is adapted from [Wikipedia's MD5 article](https://en.wikipedia.org/wiki/MD5) and is licensed under CC BY-SA 3.0.
 
