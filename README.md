@@ -1,7 +1,7 @@
 ## MD5 Hash
 An MD5 hash implementation based on content from Wikipedia
 
-**Pseudo Code**\
+**Output example**\
 \
 ![enter image description here](https://r96922081.github.io/images/md5hash/output.png)\
 \
