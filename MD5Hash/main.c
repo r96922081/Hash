@@ -30,14 +30,13 @@ void md5(uint8_t message[], uint32_t message_byte_count)
     uint32_t c0 = 0x98badcfe;
     uint32_t d0 = 0x10325476;
 
-    
     // algorithm: append "1" bit to message
     //            append "0" bit until message length in bits ≡ 448 (mod 512), that is in bytes ≡ 56 (mod 64)
     // comment: use byte unit, instead of bit, because message here is in byte.  It's simpler implementation
     int current_position = message_byte_count % 64 + 8 + 1;
     int align_position = current_position <= 64 ? 64 : 128;
     int padded_byte_count = align_position - current_position + 1;
-    int padded_message_byte_count = message_byte_count + padded_byte_count;
+    int padded_message_byte_count = message_byte_count + padded_byte_count + 8;
     uint8_t* padded_message = calloc(padded_message_byte_count, sizeof(uint8_t));
     memcpy(padded_message, message, message_byte_count);
     padded_message[message_byte_count] = (uint8_t)0x80; // first pad, 0x80 = "1" bit + "0" bit x 7
@@ -96,6 +95,8 @@ void md5(uint8_t message[], uint32_t message_byte_count)
         c0 = c0 + C;
         d0 = d0 + D;
     }
+
+    free(padded_message);
 
     printf("MD5 of \"%s\":\n", message);
     printf("%08x%08x%08x%08x\n\n", swap_endian(a0), swap_endian(b0), swap_endian(c0), swap_endian(d0));
