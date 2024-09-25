@@ -1,5 +1,5 @@
 ## MD5 Hash
-An MD5 hash implementation based on content from Wikipedia
+A MD5 hash implementation based on content from Wikipedia
 
 **Output**\
 \
